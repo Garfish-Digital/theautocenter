@@ -73,9 +73,6 @@ h6 {
 
 #welcome-heading {
     color: red;
-    /* font-family:sans-serif, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial; */
-    /* font-family:sans-serif, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial; */
-    /* font-family:sans-serif, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial; */
     font-family: Helvetica;
     font-weight: bold;
     -webkit-text-stroke-color: white;
@@ -370,6 +367,12 @@ strong {
 .navbar .navbar-brand-image {
   filter: brightness(0) invert(1);
 }
+/* .navbar .navbar-brand-image {
+  filter: brightness(0) invert(1);
+} */
+#welcome-logo {
+    filter: none;
+}
 
 .navbar-brand-image {
   width: 48px;
@@ -619,7 +622,8 @@ strong {
   ABOUT              
 -----------------------------------------*/
 .about-section {
-  background-color: #be4b4d;
+  background-color: white;
+  /* background-color: #be4b4d; */
   position: relative;
 }
 
@@ -650,6 +654,12 @@ strong {
 
 .about-video-info h4 {
   color: var(--white-color);
+}
+
+#about-text {
+    color: red !important;
+    font-family: Helvetica;
+    font-weight: bold;
 }
 
 .about-section h6 {
@@ -715,7 +725,8 @@ strong {
 -----------------------------------------*/
 .menu-section {
   /* background-image: url('../images/happy-waitress-giving-coffee-customers-while-serving-them-coffee-shop.jpg'); */
-  background-color: #be4b4d;
+  background-color: white;
+  /* background-color: #be4b4d; */
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -781,7 +792,8 @@ strong {
 }
 
 .reviews-block {
-    background-color: #be4b4d;
+    background-color: rgb(79, 4, 4);
+   /* background-color: #be4b4d; */
     border-radius: var(--border-radius-medium);
   position: relative;
   overflow: hidden;
@@ -987,21 +999,22 @@ strong {
   color: var(--primary-color);
 }
 
-#black-button {
+.black-button {
     background: black;
+    border: none;
 }
 
-#black-button:hover {
-    background: white;
-    color: black;
-}
-
-#yellow-button {
+.black-button:hover {
     background: #fefc10;
     color: black;
 }
 
-#yellow-button:hover {
+.yellow-button, #yellow-contact-button{
+    background: #fefc10;
+    color: black;
+}
+
+.yellow-button:hover, #yellow-contact-button:hover {
     background: black;
     color: #fefc10;
 }
