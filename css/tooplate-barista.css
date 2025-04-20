@@ -72,16 +72,23 @@ h6 {
 }
 
 #welcome-heading {
+    /* color: white; */
     color: rgb(125, 0, 0);
-
     font-family: Helvetica;
     font-weight: bold;
+    text-shadow: 
+    -1px -1px 0 white, /* Top-left */
+    1px -1px 0 white,  /* Top-right */
+    -1px 1px 0 white,  /* Bottom-left */
+    1px 1px 0 white;   /* Bottom-right */
+    /* color: rgb(125, 0, 0);
     -webkit-text-stroke-color: white;
-    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-width: 2px; */
 }
 
 h1 {
-  font-size: var(--h1-font-size);
+  /* font-size: var(--h1-font-size); */
+  font-size: 4.5rem;
 }
 
 h2 {
@@ -1036,6 +1043,11 @@ strong {
   color: var(--primary-color);
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Inverts the color to white */
+    cursor: pointer; /* Ensures the cursor changes to a pointer */
+}
+
 .black-button,
 #black-submit-button,
 #black-scheduling-button,
@@ -1063,6 +1075,9 @@ strong {
     color: white;
 }
 
+.welcome-page-button {
+    margin-right: 30px;
+}
 
 #black-contact-button {
     width: 200px;
@@ -1174,15 +1189,21 @@ strong {
 /*---------------------------------------
   RESPONSIVE STYLES               
 -----------------------------------------*/
+@media screen and (max-width: 1400px) {
+    h1 {
+      font-size: 48px;
+    }
+  }
+
 @media screen and (max-width: 1200px) {
   h1 {
-    font-size: 62px;
+    font-size: 48px;
   }
 }
 
 @media screen and (max-width: 991px) {
   h1 {
-    font-size: 54px;
+    font-size: 32px;
   }
 
   h2 {
@@ -1217,6 +1238,7 @@ strong {
 
   .navbar-brand,
   .navbar-brand:hover {
+    /* font-size: 8px; */
     font-size: var(--h5-font-size);
   }
 
@@ -1270,6 +1292,19 @@ strong {
     margin-right: 10px;
     margin-left: 10px;
   }
+  
+    #welcome-image {
+        margin-right: 10px;
+        margin-left: 0px;
+        width: 10%;
+        height: auto;
+    }
+
+    
+.welcome-page-button {
+    margin-right: 0px;
+}
+
 }
 
 

@@ -123,20 +123,30 @@ Bootstrap 5 HTML CSS Template
                                                 </div>
 
                                                 <div class="col-lg-6 col-12">
-                                                    <input class="form-control" type="time" name="booking-form-time"
-                                                        value="10:30">
+                                                        <select name="booking-form-time" class="form-control">
+                                                        <option value="">Time&nbsp; &#9660;</option>
+                                                        <option value="8:00">8:00am</option>
+                                                        <option value="9:00">9:00am</option>
+                                                        <option value="10:00">10:00am</option>
+                                                        <option value="11:00">11:00am</option>
+                                                        <option value="12:00">12:00pm</option>
+                                                        <option value="1:00">1:00pm</option>
+                                                        <option value="2:00">2:00pm</option>
+                                                        <option value="3:00">3:00pm</option>
+                                                        <option value="4:00">4:00pm</option>
+                                                        <option value="5:00">5:00pm</option>
+                                                    </select>
                                                 </div>
 
                                                 <div class="col-lg-6 col-12">
                                                     <input type="date" name="booking-form-date" id="booking-form-date"
-                                                        class="form-control" placeholder="Date" required="">
+                                                        class="form-control" placeholder="date" required="">
                                                 </div>
 
                                                 <div class="col-lg-12 col-12">
 
-                                                    <select name="booking-form-service-type" class="form-control"
-                                                        id="booking-form-number">
-                                                        <option value="">Please choose a service&nbsp; &#9660;</option>
+                                                    <select name="booking-form-service-type" class="form-control">
+                                                        <option value="">Type of service&nbsp; &#9660;</option>
                                                         <option value="brakes">Brakes</option>
                                                         <option value="tires">Tires</option>
                                                         <option value="alignment">Alignment</option>
