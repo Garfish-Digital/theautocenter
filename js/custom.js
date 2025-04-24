@@ -45,4 +45,9 @@
   
   })(window.jQuery);
 
-
+  document.addEventListener("DOMContentLoaded", function () {
+    const dateInput = document.getElementById("booking-form-date");
+    if (!dateInput.value) {
+        dateInput.setAttribute("placeholder", "Select a date");
+    }
+});
