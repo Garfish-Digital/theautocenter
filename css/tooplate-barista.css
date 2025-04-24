@@ -1109,23 +1109,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: var(--white-color);
 }
 
-input[type="date"] {
-    -webkit-appearance: none; /* Remove native styling on WebKit browsers */
-    -moz-appearance: none; /* Remove native styling on Firefox */
-    appearance: none; /* Remove native styling on modern browsers */
-    background-color: transparent; /* Set a transparent background */
-    border: 1px solid rgba(255, 255, 255, 0.25); /* Add a custom border */
-    color: white; /* Set text color */
-    padding: 10px; /* Add padding for better spacing */
-    border-radius: 5px; /* Optional: Add rounded corners */
-    font-size: 16px; /* Adjust font size */
-    width: 100%; /* Ensure it spans the container */
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1); /* Invert the color to make the icon white */
-    cursor: pointer; /* Ensure the cursor changes to a pointer */
-}
 
 /*---------------------------------------
   SITE FOOTER              
