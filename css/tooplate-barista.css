@@ -1053,7 +1053,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 #black-scheduling-button,
 #black-contact-button {
     background: black;
-    border: none;
+    border: 2px solid #fefc10;
 }
 
 .black-button:hover,
@@ -1067,7 +1067,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .yellow-button {
     background: #fefc10;
     color: black;
-    border: none;
+    border: 2px solid #fefc10;
 }
 
 .yellow-button:hover {
@@ -1080,11 +1080,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 #black-contact-button {
-    width: 200px;
+    width: 100%;
 }
 
 #black-submit-button {
-    width: 200px;
+    width: 100%;
+    /* margin-left: 20px; */
+    /* margin-right: 20px; */
 }
 
 .contact-form .form-control,
@@ -1107,6 +1109,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: var(--white-color);
 }
 
+input[type="date"]::placeholder {
+    color: white; /* Adjust color as needed */
+    opacity: 1; /* Ensure the placeholder is visible */
+}
 
 /*---------------------------------------
   SITE FOOTER              
