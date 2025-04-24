@@ -52,6 +52,10 @@
         altInput: true, // Show a more user-friendly date format
         altFormat: "F j, Y", // Format for the displayed date (e.g., January 1, 2025)
         minDate: "today", // Disable past dates
-        disableMobile: false // Ensures Flatpickr is used even on mobile devices
+        disableMobile: false, // Ensures Flatpickr is used even on mobile devices
+
+        onReady: function (selectedDates, dateStr, instance) {
+            instance.altInput.setAttribute("placeholder", "Select a date"); // Set placeholder for altInput
+        }
     });
 });
