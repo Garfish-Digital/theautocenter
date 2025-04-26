@@ -719,7 +719,9 @@ strong {
   bottom: 0;
 }
 
-
+.meet-technicians-button {
+    box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.3);
+}
 
 
 /*---------------------------------------
@@ -1044,9 +1046,57 @@ strong {
   color: var(--primary-color);
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1); /* Inverts the color to white */
-    cursor: pointer; /* Ensures the cursor changes to a pointer */
+.date-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%; /* Ensure the wrapper spans the full width */
+}
+
+.date-wrapper input {
+    width: 100%;
+    padding-right: 40px; /* Add space for the calendar icon */
+    padding-left: 10px; /* Add space for the placeholder */
+    font-size: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    /* background-color: transparent; */
+    color: white;
+    border-radius: 5px;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.date-wrapper input:focus + .placeholder,
+.date-wrapper input:not(:placeholder-shown) + .placeholder {
+    top: 5px;
+    font-size: 12px;
+    color: rgba(255, 255, 255) !important; /* Focused placeholder color */
+}
+
+.date-wrapper .placeholder {
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    transform: translateY(10%);
+    color: rgba(255, 255, 255) !important; /* Placeholder color */
+    font-size: 16px !important; /* Placeholder font size */
+    pointer-events: none; /* Prevent interaction with the label */
+    transition: all 0.2s ease;
+}
+
+.date-wrapper .calendar-icon {
+    position: absolute;
+    top: 25%;
+    right: 30px; /* Adjust spacing from the right */
+    transform: translateY(-50%);
+    font-size: 20px; /* Adjust size */
+    color: rgba(255, 255, 255); /* Icon color */
+    pointer-events: none; /* Prevent interaction with the icon */
+}
+
+input[type="text"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .black-button,

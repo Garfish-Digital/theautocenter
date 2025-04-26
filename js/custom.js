@@ -43,18 +43,27 @@
         }
     });
 
+    // document.addEventListener("DOMContentLoaded", function () {
+    //     flatpickr("#booking-form-date", {
+    //         dateFormat: "Y-m-d", // Customize the date format (e.g., YYYY-MM-DD)
+    //         allowInput: true, // Allow manual input if needed
+    //         altInput: true, // Show a more user-friendly date format
+    //         altFormat: "F j, Y", // Format for the displayed date (e.g., January 1, 2025)
+    //         minDate: "today", // Disable past dates
+    //         disableMobile: false, // Ensures Flatpickr is used even on mobile devices
+
+    //         onReady: function (selectedDates, dateStr, instance) {
+    //             instance.altInput.setAttribute("placeholder", "Select a date"); // Set placeholder for altInput
+    //         }
+    //     });
+    // });
+
     document.addEventListener("DOMContentLoaded", function () {
         flatpickr("#booking-form-date", {
-            dateFormat: "Y-m-d", // Customize the date format (e.g., YYYY-MM-DD)
-            allowInput: true, // Allow manual input if needed
-            altInput: true, // Show a more user-friendly date format
-            altFormat: "F j, Y", // Format for the displayed date (e.g., January 1, 2025)
+            dateFormat: "Y-m-d", // Format for the value submitted to the server
+            altInput: false, // Use the original input field
             minDate: "today", // Disable past dates
-            disableMobile: false, // Ensures Flatpickr is used even on mobile devices
-
-            onReady: function (selectedDates, dateStr, instance) {
-                instance.altInput.setAttribute("placeholder", "Select a date"); // Set placeholder for altInput
-            }
+            disableMobile: true, // Force Flatpickr on mobile devices
         });
     });
 
