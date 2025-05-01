@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'booking-form-service-type': serviceType,
         'booking-form-message': message // This will be handled conditionally in the EmailJS template
       };
+      console.log("templateParams", templateParams);
   
       // Your EmailJS Service ID and Template ID
       const serviceId = 'service_wxtzhyn'; // Replace with your actual Service ID
