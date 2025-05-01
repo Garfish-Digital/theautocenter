@@ -12,7 +12,7 @@
 
     <!-- Theme Color for Mobile Browsers -->
     <link rel="manifest" href="/manifest.json">
-    
+
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-status-bar-style" content="#000000">
 
@@ -111,7 +111,7 @@ Bootstrap 5 HTML CSS Template
                         <div class="booking-form-wrap">
                             <div class="row">
                                 <div class="col-lg-7 col-12 p-0">
-                                    <form class="custom-form booking-form" action="#" method="post" role="form">
+                                    <form id="scheduling-form" class="custom-form booking-form" action="#" method="post" role="form">
                                         <div class="text-center mb-4 pb-lg-2">
                                             <em class="text-white">Contact us to</em>
 
@@ -126,13 +126,13 @@ Bootstrap 5 HTML CSS Template
                                                 </div>
 
                                                 <div class="col-lg-6 col-12">
-                                                    <input type="tel" class="form-control" name="booking-form-phone"
-                                                        placeholder="Phone: 317 123 4567"
-                                                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required="">
+                                                    <input type="tel" id="booking-form-phone" class="form-control" name="booking-form-phone"
+                                                        placeholder="Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                                        required="">
                                                 </div>
 
                                                 <div class="col-lg-6 col-12">
-                                                        <select name="booking-form-time" class="form-control">
+                                                    <select name="booking-form-time" id="booking-form-time" class="form-control">
                                                         <option value="">Time&nbsp; &#9660;</option>
                                                         <option value="8:00">8:00am</option>
                                                         <option value="9:00">9:00am</option>
@@ -148,7 +148,8 @@ Bootstrap 5 HTML CSS Template
                                                 </div>
 
                                                 <div class="col-lg-6 col-12 date-wrapper">
-                                                    <input type="text" name="booking-form-date" id="booking-form-date" class="form-control" required>
+                                                    <input type="text" name="booking-form-date" id="booking-form-date"
+                                                        class="form-control" required>
                                                     <label for="booking-form-date" class="placeholder">Date</label>
                                                     <i class="bi-calendar calendar-icon"></i>
 
@@ -161,7 +162,7 @@ Bootstrap 5 HTML CSS Template
 
                                                 <div class="col-lg-12 col-12">
 
-                                                    <select name="booking-form-service-type" class="form-control">
+                                                    <select name="booking-form-service-type" id="booking-form-service-type" class="form-control">
                                                         <option value="">Type of service&nbsp; &#9660;</option>
                                                         <option value="brakes">Brakes</option>
                                                         <option value="tires">Tires</option>
@@ -188,16 +189,16 @@ Bootstrap 5 HTML CSS Template
                                 <div class="col-lg-5 col-12 p-0">
 
                                     <div class="booking-form-image-wrap">
-                                            <img src="images/greg_1.jpg" class="booking-form-image img-fluid" alt="">
-                                            <div class="team-block-info d-flex flex-column">
-                                                <div class="d-flex mt-auto mb-3">
-                                                    <h4 class="text-white mb-0">Greg</h4>
-    
-                                                    <p class="badge ms-4"><em>Owner</em></p>
-                                                </div>
-    
-                                                <p class="text-white mb-0">leading the TAC Team to excellence</p>
+                                        <img src="images/greg_1.jpg" class="booking-form-image img-fluid" alt="">
+                                        <div class="team-block-info d-flex flex-column">
+                                            <div class="d-flex mt-auto mb-3">
+                                                <h4 class="text-white mb-0">Greg</h4>
+
+                                                <p class="badge ms-4"><em>Owner</em></p>
                                             </div>
+
+                                            <p class="text-white mb-0">leading the TAC Team to excellence</p>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -298,6 +299,12 @@ Bootstrap 5 HTML CSS Template
 
     <!-- Flatpickr JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">(function () {emailjs.init('pEfxFnqSfHhw-5aWO');})();</script>
+    <script type="text/javascript" src="./js/emailJS.js"></script>
+
     <!-- JAVASCRIPT FILES -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
