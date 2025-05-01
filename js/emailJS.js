@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
       // Your EmailJS Service ID and Template ID
       const serviceId = 'service_wxtzhyn'; // Replace with your actual Service ID
-      const templateId = 'template_63087gn'; // Replace with your actual Template ID
+      const templateId = 'template_nb40sz5'; // Replace with your actual Template ID
+    //   const templateId = 'template_63087gn'; // Replace with your actual Template ID
   
       emailjs.send(serviceId, templateId, templateParams)
         .then(function(response) {
