@@ -571,28 +571,28 @@ Bootstrap 5 HTML CSS Template
                     </div>
 
                     <div class="col-lg-6 col-12">
-                        <form action="#" method="post" class="custom-form contact-form" role="form">
+                        <form action="#" method="post" id="contact-form" class="custom-form contact-form" role="form">
 
                             <div class="row">
 
                                 <div class="col-lg-6 col-12">
                                     <label for="name" class="form-label">Name <sup class="text-danger">*</sup></label>
 
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Helen"
+                                    <input type="text" name="name" id="contact-name" class="form-control" placeholder="Helen"
                                         required="">
                                 </div>
 
                                 <div class="col-lg-6 col-12">
                                     <label for="email" class="form-label">Email Address</label>
 
-                                    <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*"
+                                    <input type="email" name="email" id="contact-email" pattern="[^ @]*@[^ @]*"
                                         class="form-control" placeholder="Helen@gmail.com" required="">
                                 </div>
 
                                 <div class="col-12">
                                     <label for="message" class="form-label">How can we help?</label>
 
-                                    <textarea name="message" rows="4" class="form-control" id="message"
+                                    <textarea name="message" rows="4" class="form-control" id="contact-message"
                                         placeholder="Message" required=""></textarea>
 
                                 </div>
@@ -640,11 +640,6 @@ Bootstrap 5 HTML CSS Template
                                 <a href="https://x.com/minthu" target="_new" class="social-icon-link bi-linkedin">
                                 </a>
                             </li>
-
-                            <!-- <li class="social-icon-item">
-                                        <a href="#" class="social-icon-link bi-whatsapp">
-                                        </a>
-                                    </li> -->
                         </ul>
 
                     </div>
@@ -705,6 +700,11 @@ Bootstrap 5 HTML CSS Template
 
     <!-- Flatpickr JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">(function () {emailjs.init('pEfxFnqSfHhw-5aWO');})();</script>
+    <script type="text/javascript" src="./js/emailJS.js"></script>
 
     <!-- JAVASCRIPT FILES -->
     <script src="js/jquery.min.js"></script>
