@@ -41,7 +41,7 @@
     });
 
     document.addEventListener("DOMContentLoaded", function () {
-        flatpickr("#booking-form-date", {
+        flatpickr("#scheduling-form-date", {
             dateFormat: "Y-m-d", // Format for the value submitted to the server
             altInput: false, // Use the original input field
             minDate: "today", // Disable past dates

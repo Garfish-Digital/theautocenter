@@ -618,7 +618,6 @@ strong {
 -----------------------------------------*/
 .about-section {
     background-color: white;
-    /* background-color: #be4b4d; */
     position: relative;
 }
 
@@ -709,9 +708,9 @@ strong {
 
 
 /*---------------------------------------
-  BARISTA SECTION              
+  TECHNICIAN SECTION              
 -----------------------------------------*/
-.barista-section {
+.technician-section {
     background-color: black;
     position: relative;
 }
@@ -797,7 +796,6 @@ strong {
 
 .badge {
     background-color: rgb(125, 0, 0);
-    /* background-color: red; */
     font-size: 12px;
     position: relative;
     bottom: 4px;
@@ -885,9 +883,9 @@ strong {
 
 
 /*---------------------------------------
-  BOOKING SECTION              
+  scheduling SECTION              
 -----------------------------------------*/
-.booking-section {
+.scheduling-section {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), rgb(0, 0, 0, .8)), url('../images/scheduling_bg.jpg');
     background-color: rgb(0, 0, 0, .5);
     background-blend-mode: overlay;
@@ -897,30 +895,30 @@ strong {
     position: relative;
 }
 
-.booking-form-wrap {
+.scheduling-form-wrap {
     border-radius: var(--border-radius-small);
     position: relative;
     overflow: hidden;
     margin-top: 100px;
 }
 
-.booking-form {
+.scheduling-form {
     padding: 55px 65px;
 }
 
-.booking-form-image-wrap {
+.scheduling-form-image-wrap {
     position: relative;
     height: 100%;
 }
 
-.booking-form-image {
+.scheduling-form-image {
     border-radius: var(--border-radius-small);
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.booking-form-text span {
+.scheduling-form-text span {
     color: var(--white-color);
     font-size: var(--btn-font-size);
 }
@@ -1036,60 +1034,6 @@ strong {
     color: var(--primary-color);
 }
 
-/* .date-wrapper {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-}
-
-.date-wrapper input {
-    width: 100%;
-    padding-right: 40px;
-    padding-left: 10px;
-    font-size: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: white;
-    border-radius: 5px;
-    height: 40px;
-    box-sizing: border-box;
-}
-
-.date-wrapper input:focus+.placeholder,
-.date-wrapper input:not(:placeholder-shown)+.placeholder {
-    top: 5px;
-    font-size: 12px;
-   
-    color: rgb(254, 252, 16, .25);
-} */
-
-/* .date-wrapper .placeholder {
-    position: absolute;
-    top: 50%;
-    left: 25px;
-    transform: translateY(10%);
-    
-    color: rgb(254, 252, 16, .25);
-    font-size: 16px !important;
-    pointer-events: none;
-    transition: all 0.2s ease;
-}
-
-.date-wrapper .calendar-icon {
-    position: absolute;
-    top: 25%;
-    right: 30px;
-    transform: translateY(-50%);
-    font-size: 20px;
-    color: rgba(255, 255, 255);
-    pointer-events: none;
-} */
-
-/* input[type="text"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-} */
-
 .black-button,
 #black-submit-button,
 #black-scheduling-button,
@@ -1130,12 +1074,12 @@ strong {
 }
 
 .contact-form .form-control,
-.booking-form .form-control {
+.scheduling-form .form-control {
     background-color: transparent;
     border-color: rgba(255, 255, 255, 0.25);
 }
 
-.booking-form .form-control {
+.scheduling-form .form-control {
     color: var(--white-color);
 }
 
@@ -1145,10 +1089,10 @@ strong {
     color: #8d8d8d;
 }
 
-.booking-form input:-moz-placeholder,
-/* .booking-form select:-moz-placeholder, */
+.scheduling-form input:-moz-placeholder,
+/* .scheduling-form select:-moz-placeholder, */
 /* .option-placeholder, */
-.booking-form textarea:-moz-placeholder {
+.scheduling-form textarea:-moz-placeholder {
     /* color: var(--white-color); */
     /* color: #5c5c5c; */
     color: #8d8d8d;
@@ -1220,7 +1164,7 @@ strong {
     width: 35px;
     height: 35px;
     line-height: 35px;
-    transition: background 0.2s, color 0.2s;
+    transition: 0.2s, color 0.2s;
 }
 
 .social-icon-link:hover {
@@ -1301,7 +1245,7 @@ strong {
         margin-bottom: 10px;
     }
 
-    .booking-form {
+    .scheduling-form {
         padding: 45px;
     }
 
@@ -1348,7 +1292,7 @@ strong {
     .welcome-page-button {
         margin-right: 0px;
     }
-    .booking-section {
+    .scheduling-section {
         background-position: top;
         background-size: 300%;
     }
@@ -1381,7 +1325,7 @@ strong {
         height: 200px;
     }
 
-    .booking-form {
+    .scheduling-form {
         padding: 35px;
     }
 

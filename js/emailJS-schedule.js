@@ -1,5 +1,5 @@
 // Reformat the time selection to match form styling
-const timeSelect = document.querySelector('#booking-form-time');
+const timeSelect = document.querySelector('#scheduling-form-time');
 console.log("timeSelect: ", timeSelect);
 timeSelect.style.color = '#8d8d8d';
 
@@ -8,7 +8,7 @@ timeSelect.addEventListener('change', function () {
 });
 
 // Reformat the aservice type selection to match form styling
-const serviceTypeSelect = document.querySelector('#booking-form-service-type');
+const serviceTypeSelect = document.querySelector('#scheduling-form-service-type');
 console.log("serviceTypeSelect: ", serviceTypeSelect);
 serviceTypeSelect.style.color = '#8d8d8d';
 
@@ -17,7 +17,7 @@ serviceTypeSelect.addEventListener('change', function () {
 });
 
 // Reformat the date input to a more readable format
-const dateInput = document.getElementById('booking-form-date');
+const dateInput = document.getElementById('scheduling-form-date');
 
 dateInput.addEventListener('change', function() {
   const selectedDate = new Date(this.value);
@@ -28,19 +28,19 @@ dateInput.addEventListener('change', function() {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Listener & functionality for Scheduling form on reservation.html
+    // Listener & functionality for Scheduling form on scheduling.html
     const schedulingForm = document.getElementById('scheduling-form');
 
     // Select all form fields
-    const name = document.getElementById('booking-form-name');
-    const area = document.getElementById('booking-form-phone-area');
-    const prefix = document.getElementById('booking-form-phone-prefix');
-    const line = document.getElementById('booking-form-phone-line');
-    const email = document.getElementById('booking-form-email');
-    const time = document.getElementById('booking-form-time');
-    const date = document.getElementById('booking-form-date');
-    const serviceType = document.getElementById('booking-form-service-type');
-    const message = document.getElementById('booking-form-message');
+    const name = document.getElementById('scheduling-form-name');
+    const area = document.getElementById('scheduling-form-phone-area');
+    const prefix = document.getElementById('scheduling-form-phone-prefix');
+    const line = document.getElementById('scheduling-form-phone-line');
+    const email = document.getElementById('scheduling-form-email');
+    const time = document.getElementById('scheduling-form-time');
+    const date = document.getElementById('scheduling-form-date');
+    const serviceType = document.getElementById('scheduling-form-service-type');
+    const message = document.getElementById('scheduling-form-message');
 
     schedulingForm.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -93,13 +93,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Create the parameters object to send to EmailJS
         const templateParams = {
-            'booking-form-name': nameValue,
-            'booking-form-phone': `${areaValue}-${prefixValue}-${lineValue}`,
-            'booking-form-email': emailValue,
-            'booking-form-time': timeValue,
-            'booking-form-date': dateValue,
-            'booking-form-service-type': serviceTypeValue || '--',
-            'booking-form-message': messageValue
+            'scheduling-form-name': nameValue,
+            'scheduling-form-phone': `${areaValue}-${prefixValue}-${lineValue}`,
+            'scheduling-form-email': emailValue,
+            'scheduling-form-time': timeValue,
+            'scheduling-form-date': dateValue,
+            'scheduling-form-service-type': serviceTypeValue || '--',
+            'scheduling-form-message': messageValue
         };
         console.log("templateParams: ", templateParams);
 
