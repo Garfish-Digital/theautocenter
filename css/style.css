@@ -14,7 +14,7 @@
     --border-color: #7fffd4;
     --link-hover-color: #E76F51;
 
-    --body-font-family: 'Plus Jakarta Sans', sans-serif;
+    /* --body-font-family: 'Plus Jakarta Sans', sans-serif; */
 
     --h1-font-size: 68px;
     --h2-font-size: 46px;
@@ -39,7 +39,7 @@
 
 body {
     background-color: var(--white-color);
-    font-family: var(--body-font-family);
+    /* font-family: var(--body-font-family); */
 }
 
 

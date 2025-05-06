@@ -40,13 +40,4 @@
         }
     });
 
-    document.addEventListener("DOMContentLoaded", function () {
-        flatpickr("#scheduling-form-date", {
-            dateFormat: "Y-m-d", // Format for the value submitted to the server
-            altInput: false, // Use the original input field
-            minDate: "today", // Disable past dates
-            disableMobile: true, // Force Flatpickr on mobile devices
-        });
-    });
-
 })(window.jQuery);

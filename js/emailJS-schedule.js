@@ -1,6 +1,6 @@
 // Reformat the time selection to match form styling
 const timeSelect = document.querySelector('#scheduling-form-time');
-console.log("timeSelect: ", timeSelect);
+// console.log("timeSelect: ", timeSelect);
 timeSelect.style.color = '#8d8d8d';
 
 timeSelect.addEventListener('change', function () {
@@ -9,7 +9,7 @@ timeSelect.addEventListener('change', function () {
 
 // Reformat the aservice type selection to match form styling
 const serviceTypeSelect = document.querySelector('#scheduling-form-service-type');
-console.log("serviceTypeSelect: ", serviceTypeSelect);
+// console.log("serviceTypeSelect: ", serviceTypeSelect);
 serviceTypeSelect.style.color = '#8d8d8d';
 
 serviceTypeSelect.addEventListener('change', function () {
