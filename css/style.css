@@ -323,6 +323,23 @@ strong {
     font-style: italic;
 }
 
+.btn.btn-warning:hover {
+    background-color: #fefc10 !important; /* Force yellow background on hover */
+    color: #000 !important; /* Force black text on hover */
+    border-color: #ffeb3b !important; /* Optional: Maintain a similar border color */
+    cursor: default; /* Optionally change the cursor to indicate it's not interactive on hover */
+}
+
+/* Apply invert filter to scout-icons only when the button is NOT .btn-warning on hover */
+.btn-outline-dark:not(.btn-warning):hover .scout-icon {
+    filter: invert(100%);
+}
+
+/* Prevent any hover effect on scout-icons when their button IS .btn-warning */
+.btn.btn-warning:hover .scout-icon {
+    filter: none !important; /* Disable any filter */
+    cursor: default; /* Maintain default cursor */
+}
 
 /*---------------------------------------
   NAVIGATION BAR & OFFCANVAS              
@@ -795,7 +812,7 @@ strong {
 }
 
 .badge {
-    background-color: rgb(125, 0, 0);
+    background-color: #7d0000;
     font-size: 12px;
     position: relative;
     bottom: 4px;

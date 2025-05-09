@@ -1,3 +1,5 @@
+const navbarCollapse = document.getElementById('navbarNav');
+const navbarToggler = document.querySelector('.navbar-toggler');
 const serviceModal = new bootstrap.Modal(document.getElementById('serviceModal'));
 const scheduleButton = document.getElementById('scheduling-button');
 const progressBar = document.getElementById('progressBar');
@@ -38,6 +40,14 @@ step1Div.addEventListener('click', function (event) {
 // Event listener for the "Schedule" button to show the modal
 if (scheduleButton) {
     scheduleButton.addEventListener('click', function () {
+        // Check if the navbar is currently expanded on mobile
+        const isNavbarExpanded = navbarCollapse.classList.contains('show');
+
+        // If it's expanded, trigger a click on the toggler to collapse it
+        if (isNavbarExpanded) {
+            navbarToggler.click();
+        }
+
         serviceModal.show();
         currentStep = 0; // Reset to the first step when the modal is shown
         updateForm(); // Initial update to show the first step and progress
@@ -63,6 +73,18 @@ preferredTimeRadios.forEach(radio => {
     radio.addEventListener('change', function () {
         formData.preferredTime = this.value;
         nextBtn.disabled = false; // Enable Next when a time is selected
+
+        // Remove highlight from any previously selected label
+        const previouslySelectedLabelTime = document.querySelector('.form-check-label.bg-warning');
+        if (previouslySelectedLabelTime) {
+            previouslySelectedLabelTime.classList.remove('bg-warning', 'text-dark');
+        }
+
+        // Add highlight to the currently selected label
+        const selectedLabelTime = document.querySelector(`label[for="${this.id}"]`);
+        if (selectedLabelTime) {
+            selectedLabelTime.classList.add('bg-warning', 'text-dark');
+        }
     });
 });
 
@@ -167,6 +189,8 @@ function updateForm() {
     progressBar.style.width = `${(currentStep / (steps.length - 1)) * 100}%`;
     progressBar.setAttribute('aria-valuenow', (currentStep / (steps.length - 1)) * 100);
     progressBar.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+    progressBar.classList.remove('bg-primary'); // Remove the blue
+    progressBar.classList.add('bg-success'); // Add the green
 
     prevBtn.classList.toggle('d-none', currentStep === 0);
     nextBtn.classList.toggle('d-none', currentStep === steps.length - 1);
@@ -278,6 +302,18 @@ function loadSubcategories(category) {
         if (event.target.classList.contains('form-check-input')) {
             formData.serviceSubcategory = event.target.value;
             nextBtn.disabled = false;
+
+            // Remove highlight from any previously selected label
+            const previouslySelectedLabelSubcategory = step2Div.querySelector('.form-check-label.bg-warning');
+            if (previouslySelectedLabelSubcategory) {
+                previouslySelectedLabelSubcategory.classList.remove('bg-warning', 'text-dark');
+            }
+
+            // Add highlight to the currently selected label
+            const selectedLabelSubcategory = document.querySelector(`label[for="${event.target.id}"]`);
+            if (selectedLabelSubcategory) {
+                selectedLabelSubcategory.classList.add('bg-warning', 'text-dark');
+            }
         }
     });
     nextBtn.disabled = true; // Disable Next until a subcategory is chosen
@@ -289,31 +325,55 @@ const templateId = 'template_nb40sz5';
 
 // Event listener for the Submit button
 submitBtn.addEventListener('click', function () {
-    console.log('Submitting Form Data:', formData);
+    console.log('Submitting Form via sendForm');
 
     // Disable the button to prevent multiple submissions
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
 
-    emailjs.send(serviceId, templateId, formData)
+    emailjs.sendForm(serviceId, templateId, 'appointmentForm') // Pass the ID of the form
         .then(function (response) {
             console.log('SUCCESS!', response.status, response.text);
-            // Optionally display a success message to the user
             alert('Your appointment request has been submitted successfully! We will contact you shortly.');
-            serviceModal.hide(); // Close the modal
+            serviceModal.hide();
             submitBtn.disabled = false;
             submitBtn.textContent = 'Book Appointment';
-            formData = {}; // Reset form data
+            formData = {}; // Reset form data (though not strictly needed with sendForm)
             currentStep = 0;
-            updateForm(); // Reset the form to the first step
+            updateForm();
         }, function (error) {
             console.log('FAILED...', error);
-            // Optionally display an error message to the user
             alert('There was an error submitting your request. Please try again later.');
             submitBtn.disabled = false;
             submitBtn.textContent = 'Book Appointment';
         });
 });
+// submitBtn.addEventListener('click', function () {
+//     console.log('Submitting Form Data:', formData);
+
+//     // Disable the button to prevent multiple submissions
+//     submitBtn.disabled = true;
+//     submitBtn.textContent = 'Submitting...';
+
+//     emailjs.send(serviceId, templateId, formData)
+//         .then(function (response) {
+//             console.log('SUCCESS!', response.status, response.text);
+//             // Optionally display a success message to the user
+//             alert('Your appointment request has been submitted successfully! We will contact you shortly.');
+//             serviceModal.hide(); // Close the modal
+//             submitBtn.disabled = false;
+//             submitBtn.textContent = 'Book Appointment';
+//             formData = {}; // Reset form data
+//             currentStep = 0;
+//             updateForm(); // Reset the form to the first step
+//         }, function (error) {
+//             console.log('FAILED...', error);
+//             // Optionally display an error message to the user
+//             alert('There was an error submitting your request. Please try again later.');
+//             submitBtn.disabled = false;
+//             submitBtn.textContent = 'Book Appointment';
+//         });
+// });
 
 // Event listener for the modal close event
 // This will ensure that the form resets when the modal is closed
