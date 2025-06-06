@@ -1,7 +1,7 @@
 // functions/send-email.js
 
 // Import the EmailJS library
-const emailjs = require('emailjs-com');
+const emailjs = require('@emailjs/nodejs'); // Import the EmailJS Node.js SDK
 
 // This is the main handler function that Netlify will execute
 exports.handler = async function(event, context) {
@@ -89,10 +89,11 @@ const templateParams = {
 
     // Initialize EmailJS with your User ID (Public Key)
     // This links the request to your EmailJS account
-    emailjs.init(userId);
+    // emailjs.init(userId);
 
     // Send the email using the securely retrieved IDs and parameters
-    await emailjs.send(serviceId, templateId, templateParams);
+    await emailjs.send(serviceId, templateId, templateParams, userId);
+    // await emailjs.send(serviceId, templateId, templateParams);
 
     // If successful, return a 200 OK response
     return {

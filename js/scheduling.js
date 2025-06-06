@@ -323,7 +323,7 @@ function loadSubcategories(category) {
 
 // NEW Event listener for the Submit button (talking to Netlify Function)
 submitBtn.addEventListener('click', async function () { // Added 'async' keyword here!
-    console.log('Submitting Form via Netlify Function');
+    // console.log('Submitting Form via Netlify Function');
 
     // Disable the button to prevent multiple submissions
     submitBtn.disabled = true;
