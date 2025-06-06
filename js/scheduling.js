@@ -119,8 +119,6 @@ if (emailInput) {
 
 nextBtn.addEventListener('click', function () {
 
-    console.log('Current Step on Next Click:', currentStep); // Check the step value
-
     if (currentStep === 0) {
         // Logic for Step 1 (Category Selection)
         if (formData.serviceCategory) {
