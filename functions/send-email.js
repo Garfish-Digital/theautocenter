@@ -22,12 +22,19 @@ exports.handler = async function(event, context) {
 
     // Retrieve your EmailJS credentials from Netlify's secure environment variables
     // These keys MUST match the ones you set in Netlify dashboard (EMAILJS_SERVICE_ID, etc.)
-    const serviceId = process.env.EMAILJS_SERVICE_ID;
-    const templateId = process.env.EMAILJS_TEMPLATE_ID;
-    const userId = process.env.EMAILJS_USER_ID; // Your EmailJS Public Key
+const serviceId = process.env.EMAILJS_SERVICE_ID;
+const templateId = process.env.EMAILJS_TEMPLATE_ID;
+// We are now getting the PRIVATE KEY from environment variables
+const privateKey = process.env.EMAILJS_PRIVATE_KEY;
+
+console.log('DEBUG: privateKey from environment:', privateKey);
+
+    // const serviceId = process.env.EMAILJS_SERVICE_ID;
+    // const templateId = process.env.EMAILJS_TEMPLATE_ID;
+    // const userId = process.env.EMAILJS_USER_ID; // Your EmailJS Public Key
 
     // Basic validation: ensure credentials are set
-    if (!serviceId || !templateId || !userId) {
+    if (!serviceId || !templateId || !privateKey) {
       console.error('EmailJS environment variables are not properly set in Netlify.');
       return {
         statusCode: 500,
@@ -92,7 +99,10 @@ const templateParams = {
     // emailjs.init(userId);
 
     // Send the email using the securely retrieved IDs and parameters
-    await emailjs.send(serviceId, templateId, templateParams, userId);
+// Pass the private key in an object for server-side authentication
+await emailjs.send(serviceId, templateId, templateParams, { privateKey: privateKey });
+
+    // await emailjs.send(serviceId, templateId, templateParams, userId);
     // await emailjs.send(serviceId, templateId, templateParams);
 
     // If successful, return a 200 OK response
@@ -108,7 +118,8 @@ const templateParams = {
     // Return an error response to the frontend
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: 'Failed to send email. Please try again.', error: error.message }),
+      body: JSON.stringify({ message: 'Failed to send email. Please try again.', error: error.message || error.toString() }),
+    //   body: JSON.stringify({ message: 'Failed to send email. Please try again.', error: error.message }),
     };
   }
 };
