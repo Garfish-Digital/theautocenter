@@ -331,9 +331,11 @@ submitBtn.addEventListener('click', function () {
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
 
-    emailjs.sendForm(serviceId, templateId, 'appointmentForm') // Pass the ID of the form
+    // const schedulingForm = document.getElementById('schedulingForm');
+    console.log('formData:', formData);
+    emailjs.send(serviceId, templateId, formData) // Pass the ID of the form
         .then(function (response) {
-            console.log('SUCCESS!', response.status, response.text);
+            console.info('SUCCESS!', response.status, response.text);
             alert('Your appointment request has been submitted successfully! We will contact you shortly.');
             serviceModal.hide();
             submitBtn.disabled = false;
@@ -342,38 +344,12 @@ submitBtn.addEventListener('click', function () {
             currentStep = 0;
             updateForm();
         }, function (error) {
-            console.log('FAILED...', error);
+            console.error('FAILED...', error);
             alert('There was an error submitting your request. Please try again later.');
             submitBtn.disabled = false;
             submitBtn.textContent = 'Book Appointment';
         });
 });
-// submitBtn.addEventListener('click', function () {
-//     console.log('Submitting Form Data:', formData);
-
-//     // Disable the button to prevent multiple submissions
-//     submitBtn.disabled = true;
-//     submitBtn.textContent = 'Submitting...';
-
-//     emailjs.send(serviceId, templateId, formData)
-//         .then(function (response) {
-//             console.log('SUCCESS!', response.status, response.text);
-//             // Optionally display a success message to the user
-//             alert('Your appointment request has been submitted successfully! We will contact you shortly.');
-//             serviceModal.hide(); // Close the modal
-//             submitBtn.disabled = false;
-//             submitBtn.textContent = 'Book Appointment';
-//             formData = {}; // Reset form data
-//             currentStep = 0;
-//             updateForm(); // Reset the form to the first step
-//         }, function (error) {
-//             console.log('FAILED...', error);
-//             // Optionally display an error message to the user
-//             alert('There was an error submitting your request. Please try again later.');
-//             submitBtn.disabled = false;
-//             submitBtn.textContent = 'Book Appointment';
-//         });
-// });
 
 // Event listener for the modal close event
 // This will ensure that the form resets when the modal is closed
