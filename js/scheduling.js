@@ -320,36 +320,97 @@ function loadSubcategories(category) {
 }
 
 // EmailJS Service ID and Template ID
-const serviceId = 'service_wxtzhyn';
-const templateId = 'template_nb40sz5';
+// const serviceId = 'service_wxtzhyn';
+// const templateId = 'template_nb40sz5';
 
-// Event listener for the Submit button
-submitBtn.addEventListener('click', function () {
-    console.log('Submitting Form via sendForm');
+// NEW Event listener for the Submit button (talking to Netlify Function)
+submitBtn.addEventListener('click', async function () { // Added 'async' keyword here!
+    console.log('Submitting Form via Netlify Function');
 
     // Disable the button to prevent multiple submissions
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
 
-    // const schedulingForm = document.getElementById('schedulingForm');
-    console.log('formData:', formData);
-    emailjs.send(serviceId, templateId, formData) // Pass the ID of the form
-        .then(function (response) {
-            console.info('SUCCESS!', response.status, response.text);
+    console.log('Form Data to send:', formData); // This shows what your form has gathered
+
+    try {
+        // We use 'fetch' to send your 'formData' to our new Netlify serverless function.
+        // The URL '/.netlify/functions/send-email' is the specific address of your function.
+        const response = await fetch('/.netlify/functions/send-email', {
+            method: 'POST', // We are SENDING data, so it's a POST request.
+            headers: {
+                // We tell the function that the data we're sending is in JSON format.
+                'Content-Type': 'application/json',
+            },
+            // We convert your 'formData' (which is a JavaScript object) into a JSON string
+            // because web requests send strings.
+            body: JSON.stringify(formData),
+        });
+
+        // The function will send a response back. We read it as JSON.
+        const result = await response.json();
+
+        // Check if the function responded with a "success" status (like 200 OK)
+        if (response.ok) {
+            console.info('SUCCESS!', result.message);
             alert('Your appointment request has been submitted successfully! We will contact you shortly.');
-            serviceModal.hide();
+            serviceModal.hide(); // Hide the modal if successful
+
+            // --- Keep your existing success logic here ---
             submitBtn.disabled = false;
             submitBtn.textContent = 'Book Appointment';
-            formData = {}; // Reset form data (though not strictly needed with sendForm)
+            formData = {}; // Reset form data
             currentStep = 0;
             updateForm();
-        }, function (error) {
-            console.error('FAILED...', error);
+            // --- End of existing success logic ---
+
+        } else {
+            // If the function sent back an error (like 500 Internal Server Error)
+            console.error('FAILED...', result.message, result.error); // Log the error from the function
             alert('There was an error submitting your request. Please try again later.');
+
+            // --- Keep your existing error logic here ---
             submitBtn.disabled = false;
             submitBtn.textContent = 'Book Appointment';
-        });
+            // --- End of existing error logic ---
+        }
+    } catch (error) {
+        // This catches any problems with the web request itself (e.g., no internet connection)
+        console.error('Network or unexpected error during fetch:', error);
+        alert('An unexpected error occurred. Please check your internet connection and try again.');
+
+        // Re-enable the button even if a network error occurs
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Book Appointment';
+    }
 });
+
+
+// Old Event listener for the Submit button
+// submitBtn.addEventListener('click', function () {
+//     console.log('Submitting Form via sendForm');
+
+//     submitBtn.disabled = true;
+//     submitBtn.textContent = 'Submitting...';
+
+//     console.log('formData:', formData);
+//     emailjs.send(serviceId, templateId, formData)
+//         .then(function (response) {
+//             console.info('SUCCESS!', response.status, response.text);
+//             alert('Your appointment request has been submitted successfully! We will contact you shortly.');
+//             serviceModal.hide();
+//             submitBtn.disabled = false;
+//             submitBtn.textContent = 'Book Appointment';
+//             formData = {};
+//             currentStep = 0;
+//             updateForm();
+//         }, function (error) {
+//             console.error('FAILED...', error);
+//             alert('There was an error submitting your request. Please try again later.');
+//             submitBtn.disabled = false;
+//             submitBtn.textContent = 'Book Appointment';
+//         });
+// });
 
 // Event listener for the modal close event
 // This will ensure that the form resets when the modal is closed

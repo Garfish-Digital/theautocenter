@@ -1,0 +1,15 @@
+{
+  "name": "theautocenter",
+  "version": "1.0.0",
+  "description": "- git add . - git commit -m \"...\" - git push -u origin main",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "emailjs-com": "^3.2.0"
+  }
+}
