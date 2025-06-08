@@ -1,2 +1,6 @@
 [build]
-  functions = "js" # This tells Netlify to look for functions in a folder named 'functions'
+  # This line tells Netlify where your built website (HTML, CSS, client-side JS) is.
+  # If your index.html and other public assets are in the root of your repo, use "."
+  publish = "."
+  # This line now correctly points to your dedicated serverless functions folder.
+  functions = "netlify/functions"
