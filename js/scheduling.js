@@ -88,6 +88,25 @@ preferredTimeRadios.forEach(radio => {
     });
 });
 
+// Validators and formatter for the phone and email input
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function isValidPhone(phone) {
+    // Accepts 10 digits, with or without formatting
+    return /^(\d{3})[-.\s]?(\d{3})[-.\s]?(\d{4})$/.test(phone);
+}
+
+function formatPhone(phone) {
+    // Remove all non-digit characters
+    const digits = phone.replace(/\D/g, '');
+    if (digits.length === 10) {
+        return digits.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+    }
+    return phone; // Return as-is if not 10 digits
+}
+
 // Event listener for the Contact inputs
 const fullNameInput = document.getElementById('fullName');
 const phoneInput = document.getElementById('phone');
@@ -98,11 +117,35 @@ function validateStep6() {
     const phoneValue = phoneInput?.value.trim();
     const emailValue = emailInput?.value.trim();
 
-    if (fullNameValue && (phoneValue || emailValue)) {
+    let phoneValid = false;
+    let emailValid = false;
+
+    if (phoneValue) {
+        phoneValid = isValidPhone(phoneValue);
+        if (phoneValid) {
+            // Format and update the phone input
+            phoneInput.value = formatPhone(phoneValue);
+        }
+    }
+    if (emailValue) {
+        emailValid = isValidEmail(emailValue);
+    }
+
+    // Require full name and at least one valid contact method
+    if (
+        fullNameValue &&
+        ((phoneValue && phoneValid) || (emailValue && emailValid))
+    ) {
         nextBtn.disabled = false;
     } else {
         nextBtn.disabled = true;
     }
+
+    // if (fullNameValue && (phoneValue || emailValue)) {
+    //     nextBtn.disabled = false;
+    // } else {
+    //     nextBtn.disabled = true;
+    // }
 }
 
 if (fullNameInput) {

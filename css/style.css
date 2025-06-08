@@ -408,7 +408,7 @@ strong {
 
 #welcome-logo {
     filter: none;
-    width: 6%;
+    /* width: 6%; */
     height: auto;
 }
 
@@ -422,7 +422,8 @@ strong {
     filter: invert(1);
     margin-right: 0;
     margin-left: 30px;
-    width: 8%;
+    margin-top: 5px;
+    width: 6%;
     height: auto;
 }
 
