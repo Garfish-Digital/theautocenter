@@ -1,8 +1,69 @@
 {
     "name": "The Auto Center",
-    "short_name": "Auto Center",
+    "short_name": "TAC",
+    "description": "Official website for The Auto Center, your trusted auto repair shop in Indianapolis.",
     "theme_color": "#000000",
     "background_color": "#000000",
     "display": "standalone",
-    "start_url": "/"
+    "start_url": "/",
+    "scope": "/",
+    "lang": "en",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "images/favicon.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "images/logo-splash-apple-touch.png",
+            "sizes": "180x181",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "images/logo-TAC-main.png",
+            "sizes": "264x265",
+            "type": "image/png",
+            "purpose": "any"
+        },
+         {
+            "src": "images/icons/battery-icon.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "any"
+        },
+         {
+            "src": "images/icons/brake-icon.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "any"
+        },
+         {
+            "src": "images/icons/diagnostic-icon.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "any"
+        },
+         {
+            "src": "images/icons/engine-icon.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "any"
+        },
+         {
+            "src": "images/icons/suspension-icon.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "any"
+        },
+         {
+            "src": "images/icons/tire-icon.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "any"
+        }
+       
+    ]
 }

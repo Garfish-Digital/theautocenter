@@ -10,9 +10,9 @@
     $(function () {
         $('.hero-slides').vegas({
             slides: [
-                { src: 'images/slides/waterman_building.jpg' },
-                { src: 'images/slides/outside_5.jpg' },
-                { src: 'images/slides/tac_garage_outside.jpg' },
+                { src: 'images/slides/building-oldest-waterman.jpg' },
+                { src: 'images/slides/building-waterman.jpg' },
+                { src: 'images/slides/building-the-auto-center.jpg' },
             ],
             timer: false,
             animation: 'kenburns',

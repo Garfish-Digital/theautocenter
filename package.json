@@ -1,13 +1,21 @@
 {
   "name": "theautocenter",
   "version": "1.0.0",
-  "description": "- git add . - git commit -m \"...\" - git push -u origin main",
+  "description": "Official website for The Auto Center, an auto repair shop in Indianapolis.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "auto repair",
+    "car service",
+    "Indianapolis",
+    "Franklin Township",
+    "mechanic",
+    "southside",
+    "garage"
+  ],
+  "author": "Garfish, LLC",
   "license": "ISC",
   "dependencies": {
     "@emailjs/nodejs": "^5.0.2"
