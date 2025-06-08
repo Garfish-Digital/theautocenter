@@ -24,23 +24,35 @@ exports.handler = async function(event, context) {
     // These keys MUST match the ones you set in Netlify dashboard (EMAILJS_SERVICE_ID, etc.)
 const serviceId = process.env.EMAILJS_SERVICE_ID;
 const templateId = process.env.EMAILJS_TEMPLATE_ID;
-// We are now getting the PRIVATE KEY from environment variables
 const userId = process.env.EMAILJS_USER_ID;
+const privateKey = process.env.EMAILJS_PRIVATE_KEY; // Optional, if you use a private key
 
-console.log('DEBUG: userId from environment:', userId);
+console.log('DEBUG: Service ID retrieved:', serviceId ? 'Yes' : 'No');
+    console.log('DEBUG: Template ID retrieved:', templateId ? 'Yes' : 'No');
+    console.log('DEBUG: User ID (Public Key) retrieved:', userId ? 'Yes' : 'No');
+    console.log('DEBUG: Private Key retrieved:', privateKey ? 'Yes' : 'No');
 
     // const serviceId = process.env.EMAILJS_SERVICE_ID;
     // const templateId = process.env.EMAILJS_TEMPLATE_ID;
     // const userId = process.env.EMAILJS_USER_ID; // Your EmailJS Public Key
 
-    // Basic validation: ensure credentials are set
-    if (!serviceId || !templateId || !userId) {
-      console.error('EmailJS environment variables are not properly set in Netlify.');
+    // Validate that all necessary keys are present
+    if (!serviceId || !templateId || !userId || !privateKey) { // All four keys must be present
+      console.error('EmailJS environment variables are not properly set in Netlify. Check SERVICE_ID, TEMPLATE_ID, USER_ID, and PRIVATE_KEY.');
       return {
         statusCode: 500,
-        body: JSON.stringify({ message: 'Server configuration error: Email service not set up.' }),
+        body: JSON.stringify({ message: 'Server configuration error: Email service not set up. Missing one or more required API keys.' }),
       };
     }
+
+    // Basic validation: ensure credentials are set
+    // if (!serviceId || !templateId || !userId) {
+    //   console.error('EmailJS environment variables are not properly set in Netlify.');
+    //   return {
+    //     statusCode: 500,
+    //     body: JSON.stringify({ message: 'Server configuration error: Email service not set up.' }),
+    //   };
+    // }
 
     // Define the template parameters that your EmailJS template expects
 // Define the template parameters that your EmailJS template expects.
@@ -98,8 +110,13 @@ const templateParams = {
     // This links the request to your EmailJS account
     // emailjs.init(userId);
 
+    await emailjs.send(serviceId, templateId, templateParams, {
+        publicKey: userId,
+        privateKey: privateKey
+    });
+
      // Send the email using the securely retrieved IDs and parameters
-    await emailjs.send(serviceId, templateId, templateParams, { publicKey: userId });
+    // await emailjs.send(serviceId, templateId, templateParams, { publicKey: userId });
 
 // Pass the private key in an object for server-side authentication
 // await emailjs.send(serviceId, templateId, templateParams, { privateKey: privateKey });
