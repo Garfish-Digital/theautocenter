@@ -25,16 +25,16 @@ exports.handler = async function(event, context) {
 const serviceId = process.env.EMAILJS_SERVICE_ID;
 const templateId = process.env.EMAILJS_TEMPLATE_ID;
 // We are now getting the PRIVATE KEY from environment variables
-const privateKey = process.env.EMAILJS_PRIVATE_KEY;
+const userId = process.env.EMAILJS_USER_ID;
 
-console.log('DEBUG: privateKey from environment:', privateKey);
+console.log('DEBUG: userId from environment:', userId);
 
     // const serviceId = process.env.EMAILJS_SERVICE_ID;
     // const templateId = process.env.EMAILJS_TEMPLATE_ID;
     // const userId = process.env.EMAILJS_USER_ID; // Your EmailJS Public Key
 
     // Basic validation: ensure credentials are set
-    if (!serviceId || !templateId || !privateKey) {
+    if (!serviceId || !templateId || !userId) {
       console.error('EmailJS environment variables are not properly set in Netlify.');
       return {
         statusCode: 500,
@@ -98,9 +98,11 @@ const templateParams = {
     // This links the request to your EmailJS account
     // emailjs.init(userId);
 
-    // Send the email using the securely retrieved IDs and parameters
+     // Send the email using the securely retrieved IDs and parameters
+    await emailjs.send(serviceId, templateId, templateParams, { publicKey: userId });
+
 // Pass the private key in an object for server-side authentication
-await emailjs.send(serviceId, templateId, templateParams, { privateKey: privateKey });
+// await emailjs.send(serviceId, templateId, templateParams, { privateKey: privateKey });
 
     // await emailjs.send(serviceId, templateId, templateParams, userId);
     // await emailjs.send(serviceId, templateId, templateParams);
