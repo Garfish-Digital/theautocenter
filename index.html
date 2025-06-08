@@ -15,8 +15,16 @@
         content="Expert auto repair, maintenance, and diagnostics in Franklin Township, Indianapolis. Locally owned and community proud.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yourdomain.com/">
-    <meta property="og:image" content="https://yourdomain.com/images/logo-TAC-main.png">
+    <meta property="og:image" content="https://yourdomain.com/images/building-the-auto-center.jpg">
     <meta property="og:site_name" content="The Auto Center">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Auto Center | Auto Repair in Indianapolis">
+    <meta name="twitter:description"
+        content="Expert auto repair, maintenance, and diagnostics in Franklin Township, Indianapolis. Locally owned and community proud.">
+    <meta name="twitter:image" content="https://yourdomain.com/images/building-the-auto-center.jpg">
+    <meta name="twitter:site" content="@YourTwitterHandle">
 
     <!-- Primary Page Title & Canonical URL -->
     <title>The Auto Center | Auto Repair in Indianapolis</title>
@@ -42,8 +50,9 @@
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <main>
+    <main id="main-content">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="index.html">
@@ -91,13 +100,12 @@
 
         <!-- Home "Hero" section -->
         <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
-
             <div class="container">
                 <div class="row align-items-center">
 
                     <div class="col-lg-6 col-12 mx-auto">
-                        <img src="images/icons/car-and-wrench-icon.png" class="img-fluid"
-                            id="welcome-image" alt="Car and Wrench icon">
+                        <img src="images/icons/car-and-wrench-icon.png" class="img-fluid" id="welcome-image"
+                            alt="Car and Wrench icon">
 
                         <h1 id="welcome-heading">The Auto Center</h1>
 
@@ -139,16 +147,13 @@
 
                     <div class="col-lg-5 col-12 mt-4 mt-lg-0 mx-auto">
                         <em class="text-black">Welcome to</em>
-
                         <h2 class="text-black mb-3" id="about-text">The Auto Center</h2>
 
                         <p class="text-black">The Auto Center is located in the historic Waterman building on
                             Southeastern Avenue.</p>
-
                         <p class="text-black">The Auto Center is proud to serve Franklin Township and the greater
                             Indianapolis area. Life long Wanamaker resident Greg and his shop of mechanics are ready to
                             get you back on the road.</p>
-
                         <a href="#technician-team"
                             class="smoothscroll btn custom-btn custom-border-btn mt-3 mb-4 black-button meet-technicians-button">Meet
                             Technicians</a>
@@ -165,7 +170,6 @@
 
                     <div class="col-lg-12 col-12 text-center mb-4 pb-lg-2">
                         <em class="text-white">Service Technicians</em>
-
                         <h2 class="text-white">Meet the TAC Team</h2>
                     </div>
 
@@ -472,24 +476,20 @@
                         <form action="#" method="post" id="contact-form" class="custom-form contact-form" role="form">
 
                             <div class="row">
-
                                 <div class="col-lg-6 col-12">
                                     <label for="contact-name" class="form-label">Name</label>
                                     <input type="text" name="name" id="contact-name" class="form-control"
                                         placeholder="Helen Garett" required="">
                                 </div>
-
                                 <div class="col-lg-6 col-12">
                                     <label for="contact-email" class="form-label">Email Address</label>
                                     <input type="email" name="email" id="contact-email" pattern="[^ @]*@[^ @]*"
                                         class="form-control" placeholder="helengarett@gmail.com" required="">
                                 </div>
-
                                 <div class="col-12">
                                     <label for="contact-message" class="form-label">How can we help?</label>
                                     <textarea name="message" rows="4" class="form-control" id="contact-message"
                                         placeholder="Message" required=""></textarea>
-
                                 </div>
                             </div>
 
@@ -497,6 +497,7 @@
                                 <button type="submit" class="form-control" id="black-contact-button">Send
                                     Message</button>
                             </div>
+
                         </form>
                     </div>
 
@@ -577,7 +578,6 @@
                     </div>
                 </div>
         </footer>
-
 
         <!-- Scheduling Form -->
         <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true"
@@ -794,10 +794,31 @@
     <!-- EmailJS scripts-->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">(function () { emailjs.init('pEfxFnqSfHhw-5aWO'); })();</script>
-    <script type="text/javascript" src="./js/emailJS-contact.js"></script>
+    <script type="text/javascript" src="./js/contact.js"></script>
 
     <!-- Custom scripts -->
     <script src="js/scheduling.js"></script>
+
+    <!-- JSON-LD (for Linked Data to improve SEO) -->
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "AutoRepair",
+        "name": "The Auto Center",
+        "image": "https://yourdomain.com/images/logo-TAC-main.png",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Main St",
+            "addressLocality": "Indianapolis",
+            "addressRegion": "IN",
+            "postalCode": "46239",
+            "addressCountry": "US"
+        },
+        "telephone": "+1-317-555-1234",
+        "url": "https://yourdomain.com/",
+        "openingHours": "Mo-Fr 08:00-17:00"
+        }
+    </script>
 
 </body>
 

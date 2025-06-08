@@ -15,7 +15,7 @@ const step6Div = document.getElementById('step-6');
 const step7Div = document.getElementById('step-7');
 const steps = [step1Div, step2Div, step3Div, step4Div, step5Div, step6Div, step7Div];
 let currentStep = 0;
-let formData = {}; // To store the form data
+let formData = {};
 
 // Event listener for the Service Category buttons
 step1Div.addEventListener('click', function (event) {
@@ -23,8 +23,8 @@ step1Div.addEventListener('click', function (event) {
         // Remove highlight from any previously selected button
         const previouslySelected = step1Div.querySelector('.btn-warning');
         if (previouslySelected) {
-            previouslySelected.classList.remove('btn-warning', 'text-dark'); // Remove both classes
-            previouslySelected.classList.add('btn-outline-primary'); // Revert to primary outline
+            previouslySelected.classList.remove('btn-warning', 'text-dark');
+            previouslySelected.classList.add('btn-outline-primary');
         }
 
         const clickedButton = event.target;
@@ -32,8 +32,8 @@ step1Div.addEventListener('click', function (event) {
         nextBtn.disabled = false;
 
         // Add yellow highlight to the currently selected button
-        clickedButton.classList.remove('btn-outline-primary'); // Remove outline
-        clickedButton.classList.add('btn-warning', 'text-dark'); // Add warning background and dark text
+        clickedButton.classList.remove('btn-outline-primary');
+        clickedButton.classList.add('btn-warning', 'text-dark');
     }
 });
 
@@ -151,7 +151,7 @@ nextBtn.addEventListener('click', function () {
         if (selectedTime) {
             formData.preferredTime = selectedTime.value;
         } else {
-            formData.preferredTime = null; // Or however you want to represent no selection
+            formData.preferredTime = null;
         }
         nextBtn.disabled = !selectedTime; // Ensure Next is disabled if no time is selected (e.g., on revisiting the step)
     } else if (currentStep === 5) {
@@ -172,11 +172,6 @@ nextBtn.addEventListener('click', function () {
 prevBtn.addEventListener('click', function () {
     currentStep--;
     updateForm();
-});
-
-submitBtn.addEventListener('click', function () {
-    console.log('Form Data:', formData);
-    // Here you would send the formData to EmailJS
 });
 
 function updateForm() {
@@ -200,7 +195,6 @@ function updateForm() {
     } else if (currentStep === 1 && !formData.serviceSubcategory) {
         nextBtn.disabled = true;
     } else if (currentStep === 3) {
-        // nextBtn.disabled = !document.getElementById('preferredDate').value;
         const today = new Date();
         const year = today.getFullYear();
         let month = today.getMonth() + 1; // Month is 0-indexed
@@ -317,63 +311,44 @@ function loadSubcategories(category) {
     nextBtn.disabled = true; // Disable Next until a subcategory is chosen
 }
 
-// EmailJS Service ID and Template ID
-// const serviceId = 'service_wxtzhyn';
-// const templateId = 'template_nb40sz5';
-
-// NEW Event listener for the Submit button (talking to Netlify Function)
-submitBtn.addEventListener('click', async function () { // Added 'async' keyword here!
-    // console.log('Submitting Form via Netlify Function');
+// Submit button handler for Netlify Function
+submitBtn.addEventListener('click', async function () {
 
     // Disable the button to prevent multiple submissions
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
 
-    console.log('Form Data to send:', formData); // This shows what your form has gathered
-
     try {
-        // We use 'fetch' to send your 'formData' to our new Netlify serverless function.
-        // The URL '/.netlify/functions/send-email' is the specific address of your function.
+        // 'fetch' sends 'formData' to the Netlify serverless function.
+        // The URL '/.netlify/functions/send-email' is the specific address of the function.
         const response = await fetch('/.netlify/functions/send-email', {
-            method: 'POST', // We are SENDING data, so it's a POST request.
+            method: 'POST',
             headers: {
-                // We tell the function that the data we're sending is in JSON format.
                 'Content-Type': 'application/json',
             },
-            // We convert your 'formData' (which is a JavaScript object) into a JSON string
-            // because web requests send strings.
             body: JSON.stringify(formData),
         });
 
-        // The function will send a response back. We read it as JSON.
         const result = await response.json();
 
-        // Check if the function responded with a "success" status (like 200 OK)
         if (response.ok) {
             console.info('SUCCESS!', result.message);
             alert('Your appointment request has been submitted successfully! We will contact you shortly.');
-            serviceModal.hide(); // Hide the modal if successful
+            serviceModal.hide();
 
-            // --- Keep your existing success logic here ---
             submitBtn.disabled = false;
             submitBtn.textContent = 'Book Appointment';
-            formData = {}; // Reset form data
+            formData = {};
             currentStep = 0;
             updateForm();
-            // --- End of existing success logic ---
-
         } else {
-            // If the function sent back an error (like 500 Internal Server Error)
-            console.error('FAILED...', result.message, result.error); // Log the error from the function
+            console.error('FAILED...', result.message, result.error);
             alert('There was an error submitting your request. Please try again later.');
 
-            // --- Keep your existing error logic here ---
             submitBtn.disabled = false;
             submitBtn.textContent = 'Book Appointment';
-            // --- End of existing error logic ---
         }
     } catch (error) {
-        // This catches any problems with the web request itself (e.g., no internet connection)
         console.error('Network or unexpected error during fetch:', error);
         alert('An unexpected error occurred. Please check your internet connection and try again.');
 
@@ -382,33 +357,6 @@ submitBtn.addEventListener('click', async function () { // Added 'async' keyword
         submitBtn.textContent = 'Book Appointment';
     }
 });
-
-
-// Old Event listener for the Submit button
-// submitBtn.addEventListener('click', function () {
-//     console.log('Submitting Form via sendForm');
-
-//     submitBtn.disabled = true;
-//     submitBtn.textContent = 'Submitting...';
-
-//     console.log('formData:', formData);
-//     emailjs.send(serviceId, templateId, formData)
-//         .then(function (response) {
-//             console.info('SUCCESS!', response.status, response.text);
-//             alert('Your appointment request has been submitted successfully! We will contact you shortly.');
-//             serviceModal.hide();
-//             submitBtn.disabled = false;
-//             submitBtn.textContent = 'Book Appointment';
-//             formData = {};
-//             currentStep = 0;
-//             updateForm();
-//         }, function (error) {
-//             console.error('FAILED...', error);
-//             alert('There was an error submitting your request. Please try again later.');
-//             submitBtn.disabled = false;
-//             submitBtn.textContent = 'Book Appointment';
-//         });
-// });
 
 // Event listener for the modal close event
 // This will ensure that the form resets when the modal is closed
@@ -422,7 +370,7 @@ serviceModal._element.addEventListener('hidden.bs.modal', function () {
         focusedElement.blur();
     }
 
-    formData = {}; // Reset form data
+    formData = {};
     currentStep = 0;
     updateForm(); // Reset the form to the first step
 });

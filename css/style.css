@@ -132,6 +132,32 @@ strong {
 
 
 /*---------------------------------------
+  SKIP TO MAIN CONTENT LINK               
+-----------------------------------------*/
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 10000;
+    background: #fefc10;
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.skip-link:focus {
+    left: 16px;
+    top: 16px;
+    width: auto;
+    height: auto;
+    outline: 2px solid #000;
+}
+
+
+/*---------------------------------------
   SECTION               
 -----------------------------------------*/
 .section-padding {
@@ -382,6 +408,8 @@ strong {
 
 #welcome-logo {
     filter: none;
+    width: 6%;
+    height: auto;
 }
 
 .navbar-brand-image {
