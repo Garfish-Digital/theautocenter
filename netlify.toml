@@ -1,2 +1,2 @@
 [build]
-  functions = "functions" # This tells Netlify to look for functions in a folder named 'functions'
+  functions = "js" # This tells Netlify to look for functions in a folder named 'functions'

@@ -110,7 +110,7 @@ const templateParams = {
     // If successful, return a 200 OK response
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: 'Email sent successfully!' }),
+      body: JSON.stringify({ message: 'Email sent successfully!' })
     };
 
   } catch (error) {
