@@ -408,7 +408,6 @@ strong {
 
 #welcome-logo {
     filter: none;
-    /* width: 6%; */
     height: auto;
 }
 
@@ -1377,7 +1376,7 @@ strong {
     }
 
     #welcome-image {
-        margin-right: 15px;
+        margin-right: 25px;
         margin-left: 0px;
         width: 8%;
     }
