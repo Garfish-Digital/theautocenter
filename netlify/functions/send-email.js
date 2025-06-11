@@ -51,7 +51,7 @@ exports.handler = async function (event, context) {
 
             // NOTE: Direct file uploads usually require more complex handling (e.g., storing on cloud storage)
             // and EmailJS's free tier has limitations. This just tells you if a file was *intended* for upload.
-            mediaUpload: formDataFromFrontend.mediaUpload ? `File Attached: ${formDataFromFrontend.mediaUpload.name}` : 'No file attached',
+            // mediaUpload: formDataFromFrontend.mediaUpload ? `File Attached: ${formDataFromFrontend.mediaUpload.name}` : 'No file attached',
 
             // Example of combining data for the email content (optional)
             full_inquiry_details: `
@@ -63,8 +63,8 @@ exports.handler = async function (event, context) {
                 Full Name: ${formDataFromFrontend.fullName || 'N/A'}
                 Email: ${formDataFromFrontend.email || 'N/A'}
                 Phone: ${formDataFromFrontend.phone || 'N/A'}
-                File Upload: ${formDataFromFrontend.mediaUpload ? formDataFromFrontend.mediaUpload.name : 'None'}
             `.trim()
+                // File Upload: ${formDataFromFrontend.mediaUpload ? formDataFromFrontend.mediaUpload.name : 'None'}
         };
 
         await emailjs.send(serviceId, templateId, templateParams, {

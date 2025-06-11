@@ -179,7 +179,7 @@ nextBtn.addEventListener('click', function () {
     } else if (currentStep === 2) {
         // Logic for Step 3 (Description and Media)
         formData.description = document.getElementById('description').value;
-        formData.mediaUpload = document.getElementById('mediaUpload').files[0];
+        // formData.mediaUpload = document.getElementById('mediaUpload').files[0];
         nextBtn.disabled = false; // Enable Next after moving past this step
     } else if (currentStep === 3) {
         // Logic for Step 4 (Preferred Date)
@@ -272,14 +272,14 @@ function updateForm() {
         document.getElementById('review-phone').textContent = formData.phone || 'Not Provided';
         document.getElementById('review-email').textContent = formData.email || 'Not Provided';
 
-        const reviewMediaDiv = document.getElementById('review-media');
-        reviewMediaDiv.innerHTML = ''; // Clear previous content
-        if (formData.mediaUpload) {
-            const mediaInfo = `<p><strong>Uploaded File:</strong> ${formData.mediaUpload.name} (${(formData.mediaUpload.size / 1024).toFixed(2)} KB)</p>`;
-            reviewMediaDiv.innerHTML = mediaInfo;
-        } else {
-            reviewMediaDiv.innerHTML = '<p><strong>Uploaded File:</strong> None</p>';
-        }
+        // const reviewMediaDiv = document.getElementById('review-media');
+        // reviewMediaDiv.innerHTML = ''; // Clear previous content
+        // if (formData.mediaUpload) {
+        //     const mediaInfo = `<p><strong>Uploaded File:</strong> ${formData.mediaUpload.name} (${(formData.mediaUpload.size / 1024).toFixed(2)} KB)</p>`;
+        //     reviewMediaDiv.innerHTML = mediaInfo;
+        // } else {
+        //     reviewMediaDiv.innerHTML = '<p><strong>Uploaded File:</strong> None</p>';
+        // }
     }
 }
 
@@ -316,8 +316,8 @@ function loadSubcategories(category) {
         case 'diagnostics':
             subcategories = ['Check engine light diagnosis', 'ABS light diagnosis', 'Airbag light diagnosis', 'Electrical system diagnosis', 'Other diagnostic service'];
             break;
-        case 'describe_issue':
-        case 'specific_part':
+        // case 'describe_issue':
+        // case 'specific_part':
         default:
             subcategories = ['General inquiry for ' + category];
             break;
