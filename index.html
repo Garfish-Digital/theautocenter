@@ -810,7 +810,7 @@
     <!-- EmailJS scripts-->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">(function () { emailjs.init('pEfxFnqSfHhw-5aWO'); })();</script>
-    <script type="text/javascript" src="./js/contact.js"></script>
+    <script type="text/javascript" src="js/contact.js"></script>
 
     <!-- Custom scripts -->
     <script src="js/scheduling.js"></script>
@@ -836,6 +836,12 @@
         }
     </script>
 
+    <!-- Onload UX fade -->
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            document.body.classList.add('fade-in');
+        });
+    </script>
 </body>
 
 </html>
